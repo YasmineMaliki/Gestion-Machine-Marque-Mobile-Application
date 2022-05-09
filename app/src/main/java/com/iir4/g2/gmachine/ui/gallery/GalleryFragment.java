@@ -1,5 +1,6 @@
 package com.iir4.g2.gmachine.ui.gallery;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,7 +28,11 @@ import com.android.volley.toolbox.Volley;
 import com.iir4.g2.gmachine.R;
 import com.iir4.g2.gmachine.adapter.MarqueAdapter;
 import com.iir4.g2.gmachine.databinding.FragmentGalleryBinding;
+import com.iir4.g2.gmachine.databinding.UpdateMarqueFragmentBinding;
+import com.iir4.g2.gmachine.models.Machine;
 import com.iir4.g2.gmachine.models.Marque;
+import com.iir4.g2.gmachine.ui.update.UpdateFragment;
+import com.iir4.g2.gmachine.ui.updateMarque.UpdateMarqueFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -81,9 +86,24 @@ public class GalleryFragment extends Fragment {
                 final TextView id = viewHolder.itemView.findViewById(R.id.id_marque_fragment);
                 int position = viewHolder.getAdapterPosition();
                 int ide = Integer.parseInt((String) id.getText());
-                deleteData(ide);
-                recycle_view_marque_fragment.setAdapter(marqueAdapterForRecycle);
-                marqueAdapterForRecycle.notifyItemRemoved(ide);
+                switch(direction) {
+                    case ItemTouchHelper.RIGHT:
+                        deleteData(ide);
+                        recycle_view_marque_fragment.setAdapter(marqueAdapterForRecycle);
+                        marqueAdapterForRecycle.notifyItemRemoved(ide);
+                        break;
+                    case ItemTouchHelper.LEFT:
+                        Intent intent = new Intent(getActivity().getApplicationContext(), UpdateMarqueFragment.class);
+                        Marque marque=marques.get(findPositionById(marques, ide));
+                        Bundle b = new Bundle();
+                        b.putString("id",marque.getId());
+                        b.putString("code",marque.getCode());
+                        b.putString("libelle",marque.getLibelle());
+                        UpdateMarqueFragment mf = new UpdateMarqueFragment();
+                        mf.setArguments(b);
+                        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_nav,mf).setReorderingAllowed(true).addToBackStack(null).commit();
+                        break;
+                }
             }
 
         };

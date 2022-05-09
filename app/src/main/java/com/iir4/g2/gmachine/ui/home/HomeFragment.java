@@ -2,6 +2,7 @@ package com.iir4.g2.gmachine.ui.home;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -34,10 +35,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.iir4.g2.gmachine.adapter.MachineAdapter;
-import com.iir4.g2.gmachine.adapter.MarqueAdapter;
 import com.iir4.g2.gmachine.databinding.FragmentHomeBinding;
 import com.iir4.g2.gmachine.models.Machine;
 import com.iir4.g2.gmachine.models.Marque;
+import com.iir4.g2.gmachine.ui.update.UpdateFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,6 +74,7 @@ public class HomeFragment extends Fragment {
     MachineAdapter machineAdapter;
     LinearLayoutManager linearLayoutManager;
     List<Machine> machines;
+    private View v;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -164,8 +166,25 @@ public class HomeFragment extends Fragment {
                 final TextView id = viewHolder.itemView.findViewById(R.id.id_machine_fragment);
                 int position = viewHolder.getAdapterPosition();
                 int ide = Integer.parseInt((String) id.getText());
-                deleteData(ide);
-                recycle_view_machine_fragment.setAdapter(machineAdapter);
+                switch(direction) {
+                    case ItemTouchHelper.RIGHT:
+                        deleteData(ide);
+                        recycle_view_machine_fragment.setAdapter(machineAdapter);
+                        break;
+                    case ItemTouchHelper.LEFT:
+                        Intent intent = new Intent(getActivity().getApplicationContext(), UpdateFragment.class);
+                        Machine machine=machines.get(findPositionById(machines, ide));
+                        Bundle b = new Bundle();
+                        b.putString("id",machine.getId());
+                        b.putString("reference",machine.getReference());
+                        b.putString("dateAchat",machine.getDate());
+                        b.putString("prix",machine.getPrix());
+                        b.putString("marqueId",machine.getMarque().getLibelle());
+                        UpdateFragment mf = new UpdateFragment();
+                        mf.setArguments(b);
+                        getFragmentManager().beginTransaction().replace(R.id.nav_host_fragment_content_nav,mf).setReorderingAllowed(true).addToBackStack(null).commit();
+                        break;
+                }
 
             }
         };

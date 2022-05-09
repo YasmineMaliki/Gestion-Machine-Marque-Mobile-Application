@@ -10,6 +10,7 @@
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/GMachine/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.19" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/GMachine/app/src/main/res/layout-w1240dp/machine_item.xml" value="0.16" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/GMachine/app/src/main/res/layout-w1240dp/machinesalle_item.xml" value="0.4" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/GMachine/app/src/main/res/layout-w1240dp/spinner_item.xml" value="0.15060240963855423" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/GMachine/app/src/main/res/layout/activity_introductive.xml" value="0.234375" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/GMachine/app/src/main/res/layout/activity_nav.xml" value="0.2328125" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/GMachine/app/src/main/res/layout/content_nav.xml" value="0.151268115942029" />
@@ -24,6 +25,8 @@
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/GMachine/app/src/main/res/layout/nav_header_nav.xml" value="0.234375" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/GMachine/app/src/main/res/layout/signup_tab_fragment.xml" value="0.234375" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/GMachine/app/src/main/res/layout/slideshow_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/GMachine/app/src/main/res/layout/update_fragment.xml" value="0.14114583333333333" />
+        <entry key="..\:/Users/LENOVO/AndroidStudioProjects/GMachine/app/src/main/res/layout/update_marque_fragment.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/GMachine/app/src/main/res/menu/activity_main_drawer.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/AndroidStudioProjects/GMachine/app/src/main/res/menu/nav.xml" value="0.25" />
         <entry key="..\:/Users/LENOVO/GMachine/app/src/main/res/drawable/button_bg.xml" value="0.1" />
